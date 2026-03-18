@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vishvesh Sharad Tendle — AI & ML Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F3EC;
+      --ink: #1A1714;
+      --warm-mid: #6B5B4E;
+      --accent: #C8512A;
+      --accent-light: #F0D5C8;
+      --gold: #BFA06A;
+      --surface: #EDE8DF;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(247,243,236,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(191,160,106,0.25);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 4rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 45%;
+      height: 100%;
+      background: var(--surface);
+      z-index: 0;
+    }
+
+    .hero-text { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-top: 2px solid var(--accent);
+      padding-top: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--warm-mid);
+      margin: 1.5rem 0 2.5rem;
+      max-width: 440px;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--ink);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--accent); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 1px solid rgba(191,160,106,0.3);
+      padding: 1.5rem;
+      animation: slideIn 0.7s ease both;
+    }
+
+    .hero-card:nth-child(2) { animation-delay: 0.15s; margin-left: 2rem; }
+    .hero-card:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-val {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--ink);
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 4rem; }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    #about .section-title { color: var(--cream); }
+
+    #about p {
+      color: rgba(247,243,236,0.75);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .stat {
+      border-top: 1px solid rgba(191,160,106,0.4);
+      padding-top: 1rem;
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+    }
+
+    .stat-desc {
+      font-size: 0.82rem;
+      color: rgba(247,243,236,0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .about-image-box {
+      position: relative;
+    }
+
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--warm-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: rgba(247,243,236,0.4);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-img-placeholder svg { width: 64px; opacity: 0.35; }
+
+    .about-img-placeholder::after {
+      content: 'YOUR PHOTO HERE';
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--accent);
+      color: var(--white);
+      padding: 1.2rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── ARTIFACT ── */
+    #artifact {
+      background: var(--cream);
+    }
+
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .artifact-meta { }
+
+    .artifact-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .artifact-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .artifact-body {
+      color: var(--warm-mid);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .artifact-detail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .artifact-detail-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--warm-mid);
+    }
+
+    .artifact-detail-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .artifact-showcase {
+      background: var(--surface);
+      padding: 2.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.2rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 28px;
+      bottom: 0;
+      width: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .tl-dot {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--white);
+      z-index: 1;
+    }
+
+    .tl-year {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-event {
+      font-weight: 500;
+      font-size: 0.92rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-desc {
+      font-size: 0.82rem;
+      color: var(--warm-mid);
+      font-weight: 300;
+    }
+
+    /* ── CHATBOT ARTIFACT ── */
+    .chatbot-hero {
+      background: var(--ink);
+      border-left: 4px solid var(--accent);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .chatbot-icon {
+      font-size: 2.8rem;
+      flex-shrink: 0;
+    }
+
+    .chatbot-hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+
+    .chatbot-hero-sub {
+      font-size: 0.85rem;
+      color: rgba(247,243,236,0.55);
+    }
+
+    .chatbot-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      background: var(--accent);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+
+    .chatbot-link-btn:hover { opacity: 0.85; }
+
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+
+    .phase-card {
+      background: var(--white);
+      border-top: 3px solid var(--gold);
+      padding: 1rem 0.75rem;
+      text-align: center;
+    }
+
+    .phase-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .phase-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .test-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .test-card {
+      background: var(--white);
+      border: 1px solid rgba(191,160,106,0.25);
+      padding: 1.2rem 1.5rem;
+    }
+
+    .test-q {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .test-question {
+      font-weight: 500;
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .test-answer {
+      font-size: 0.85rem;
+      color: var(--warm-mid);
+      font-weight: 300;
+    }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tech-pill {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.85rem;
+      text-transform: uppercase;
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--surface);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .skill-card {
+      background: var(--white);
+      padding: 2rem;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+    .skill-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--warm-mid);
+      font-weight: 300;
+    }
+
+    /* ── REFLECTION ── */
+    #reflection {
+      background: var(--cream);
+    }
+
+    .reflection-inner {
+      max-width: 780px;
+      margin: 3rem auto 0;
+      background: var(--white);
+      padding: 3.5rem;
+      border: 1px solid rgba(191,160,106,0.25);
+      position: relative;
+    }
+
+    .reflection-inner::before {
+      content: '"';
+      font-family: 'DM Serif Display', serif;
+      font-size: 8rem;
+      color: var(--accent-light);
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      line-height: 1;
+    }
+
+    .reflection-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      line-height: 1.7;
+      color: var(--ink);
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reflection-sub {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--warm-mid);
+      font-weight: 300;
+      border-top: 1px solid var(--surface);
+      padding-top: 1.5rem;
+    }
+
+    .reflection-author {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-line {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .author-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    #contact .section-title { color: var(--cream); }
+
+    .contact-sub {
+      color: rgba(247,243,236,0.6);
+      max-width: 480px;
+      margin: 1rem auto 3rem;
+      font-weight: 300;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(191,160,106,0.4);
+      color: var(--cream);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover { background: var(--accent); border-color: var(--accent); }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(247,243,236,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+      .hero::before { display: none; }
+      #about { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+      .about-image-box { display: none; }
+      .artifact-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 4rem 1.5rem; }
+      .reflection-inner { padding: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Vishvesh Sharad Tendle — Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#artifact">Artifact</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">AI & ML Professional Portfolio</span>
+    <h1>Exploring the <em>Frontier</em> of Artificial Intelligence</h1>
+    <p class="hero-sub">A curated showcase of my learning journey, technical work, and professional growth in the field of AI and Machine Learning.</p>
+    <a href="#artifact" class="hero-cta">View Artifact 1 →</a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="card-label">Student</div>
+      <div class="card-val">Vishvesh Sharad Tendle</div>
+    </div>
+    <div class="hero-card">
+      <div class="card-label">Artifact 1</div>
+      <div class="card-val">CareerPath AI Chatbot</div>
+    </div>
+    <div class="hero-card">
+      <div class="card-label">Date Submitted</div>
+      <div class="card-val">3/17/2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <div class="section-label">Who I Am</div>
+    <h2 class="section-title">Building a Foundation in Intelligent Systems</h2>
+    <p>My name is <strong>Vishvesh Sharad Tendle</strong>. I am an emerging AI and Machine Learning professional with a passion for understanding how intelligent systems learn, reason, and transform industries. This portfolio documents my growth from foundational knowledge to applied practice.</p>
+    <p>I believe in explaining complex technical concepts in accessible language — a skill as valuable as any algorithm. My goal is to bridge the gap between cutting-edge AI research and real-world impact.</p>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">W1</div>
+        <div class="stat-desc">Current Workshop</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1</div>
+        <div class="stat-desc">Artifacts Published</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">AI/ML</div>
+        <div class="stat-desc">Specialization</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-desc">Curiosity Level</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-image-box">
+    <div class="about-img-placeholder">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="22" r="14" stroke="currentColor" stroke-width="2"/>
+        <path d="M8 56c0-13.25 10.745-24 24-24s24 10.75 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="about-badge">AI & ML<br/>Student</div>
+  </div>
+</section>
+
+<!-- ARTIFACT -->
+<section id="artifact">
+  <div class="section-label">Workshop 1 — Artifact 1</div>
+  <h2 class="section-title">CareerPath AI — Chatbot Project</h2>
+
+  <!-- Chatbot Hero Banner -->
+  <div class="chatbot-hero">
+    <div class="chatbot-icon">🤖</div>
+    <div>
+      <div class="chatbot-hero-title">CareerPath AI</div>
+      <div class="chatbot-hero-sub">An AI-powered chatbot built to help students and early-career professionals explore career paths, improve resumes, and prepare for job interviews.</div>
+      <a href="https://chatgpt.com/g/g-69b593772a9c81918363d14e177207db-careerpath-ai" target="_blank" class="chatbot-link-btn">🔗 Try the Live Chatbot →</a>
+    </div>
+  </div>
+
+  <div class="artifact-grid">
+    <div class="artifact-meta">
+      <div class="artifact-tag">Generative AI — Design Thinking</div>
+      <h3 class="artifact-title">Building a Real-World AI Assistant</h3>
+      <p class="artifact-body">
+        CareerPath AI was developed as a practical exploration of generative AI technologies. Using Large Language Models (LLMs), Natural Language Processing (NLP), and prompt engineering, I built a conversational assistant that solves a real problem: helping students and early-career professionals navigate the job market.
+      </p>
+      <p class="artifact-body">
+        The project followed the <strong>Design Thinking framework</strong> — Empathize, Define, Ideate, Prototype, and Test — ensuring the chatbot was built around actual user needs rather than assumptions.
+      </p>
+
+      <ul class="artifact-detail-list">
+        <li><strong>Audience:</strong> Students, early-career professionals, hiring coaches, and AI practitioners</li>
+        <li><strong>Purpose:</strong> Demonstrates applied AI development, prompt engineering, and human-centered design</li>
+        <li><strong>Technologies Used:</strong> LLM, NLP, Conversational AI, Prompt Engineering</li>
+        <li><strong>Framework:</strong> Design Thinking (5 phases)</li>
+        <li><strong>Date Submitted:</strong> 3/17/2026</li>
+      </ul>
+
+      <div class="tech-pills">
+        <span class="tech-pill">LLM</span>
+        <span class="tech-pill">NLP</span>
+        <span class="tech-pill">Prompt Engineering</span>
+        <span class="tech-pill">Conversational AI</span>
+        <span class="tech-pill">Design Thinking</span>
+      </div>
+    </div>
+
+    <div class="artifact-showcase">
+
+      <!-- Design Thinking Phases -->
+      <div style="margin-bottom: 1.5rem;">
+        <div class="card-label" style="color: var(--gold); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; margin-bottom:0.75rem;">Design Thinking Framework</div>
+        <div class="phase-grid">
+          <div class="phase-card">
+            <div class="phase-num">Phase 1</div>
+            <div class="phase-name">Empathize</div>
+          </div>
+          <div class="phase-card">
+            <div class="phase-num">Phase 2</div>
+            <div class="phase-name">Define</div>
+          </div>
+          <div class="phase-card">
+            <div class="phase-num">Phase 3</div>
+            <div class="phase-name">Ideate</div>
+          </div>
+          <div class="phase-card" style="border-color: var(--accent);">
+            <div class="phase-num" style="color:var(--accent);">Phase 4</div>
+            <div class="phase-name">Prototype</div>
+          </div>
+          <div class="phase-card">
+            <div class="phase-num">Phase 5</div>
+            <div class="phase-name">Test</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bot Capabilities -->
+      <div style="margin-bottom: 1.5rem;">
+        <div class="card-label" style="color: var(--gold); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; margin-bottom:0.75rem;">Bot Capabilities</div>
+        <ul class="artifact-detail-list">
+          <li>Recommends suitable career paths based on user interests</li>
+          <li>Identifies key skills required for specific tech roles</li>
+          <li>Provides resume improvement suggestions</li>
+          <li>Offers structured interview preparation tips</li>
+          <li>Suggests learning resources for skill development</li>
+        </ul>
+      </div>
+
+      <!-- Test Scenarios -->
+      <div class="card-label" style="color: var(--gold); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; margin-bottom:0.75rem;">Test Scenarios</div>
+      <div class="test-cards">
+        <div class="test-card">
+          <div class="test-q">Scenario 1</div>
+          <div class="test-question">What are the requirements to become a data analyst?</div>
+          <div class="test-answer">The chatbot recommended learning Python, SQL, statistics, and data visualization tools such as Tableau or Power BI.</div>
+        </div>
+        <div class="test-card">
+          <div class="test-q">Scenario 2</div>
+          <div class="test-question">How can I improve my resume?</div>
+          <div class="test-answer">The chatbot suggested highlighting achievements, using clear formatting, and tailoring the resume to match specific job descriptions.</div>
+        </div>
+        <div class="test-card">
+          <div class="test-q">Scenario 3</div>
+          <div class="test-question">What interview questions should I prepare for a data analyst role?</div>
+          <div class="test-answer">The chatbot recommended preparing for SQL queries, statistical analysis, data visualization tools, problem-solving scenarios, and behavioral interview questions.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Competencies</div>
+  <h2 class="section-title">Skills & Strengths</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🧠</div>
+      <div class="skill-name">AI Fundamentals</div>
+      <div class="skill-desc">Understanding of machine learning theory, supervised and unsupervised learning, and neural network architectures.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Data Analysis</div>
+      <div class="skill-desc">Ability to interpret and present data-driven insights, working with structured and unstructured datasets.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗣️</div>
+      <div class="skill-name">Technical Communication</div>
+      <div class="skill-desc">Translating complex AI/ML concepts into clear language for diverse audiences — technical and non-technical alike.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">Self-Assessment</div>
+      <div class="skill-desc">Practiced in professional self-evaluation to identify strengths, gaps, and a clear path for growth.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">Generative AI Tools</div>
+      <div class="skill-desc">Hands-on experience with modern GenAI tools including large language models and image generation systems.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">Continuous Learning</div>
+      <div class="skill-desc">Committed to staying current with a rapidly evolving field by engaging with research, labs, and industry trends.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="section-label">Professional Reflection</div>
+  <h2 class="section-title">Workshop 1 — Reflection</h2>
+  <div class="reflection-inner">
+    <p class="reflection-text">
+      Building CareerPath AI taught me that great AI tools are not just about the technology — they are about deeply understanding the people you are building for.
+    </p>
+    <div class="reflection-sub">
+      <p>This project gave me hands-on experience with generative AI technologies and the full development lifecycle of a conversational AI assistant. From testing prompts with large language models to applying the Design Thinking framework, every phase deepened my understanding of how AI systems can solve real human problems.</p>
+      <br/>
+      <p>One of the most valuable lessons was the power of prompt engineering. Early in the process, the chatbot's responses were either too general or too lengthy. By refining the prompts — making them more specific and context-rich — the quality of the responses improved dramatically. This showed me that how you communicate with an AI system is just as important as the system itself.</p>
+      <br/>
+      <p>The Design Thinking framework kept the work grounded in empathy. Instead of building a tool based on assumptions, I started by identifying real challenges students face: lack of career direction, limited resume knowledge, and interview anxiety. That foundation shaped every decision in the design and testing phases.</p>
+      <br/>
+      <p>Overall, this project demonstrated the practical potential of generative AI in education and career development — and gave me a concrete, shareable artifact that reflects both my technical curiosity and my commitment to building tools that genuinely help people.</p>
+    </div>
+    <div class="reflection-author">
+      <div class="author-line"></div>
+      <div class="author-name">Vishvesh Sharad Tendle — 3/17/2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Let's Connect</h2>
+  <p class="contact-sub">Interested in my work or want to collaborate? Reach out through any of the channels below.</p>
+  <div class="contact-links">
+    <a href="/cdn-cgi/l/email-protection#c6bfa9b3b4a3aba7afaa86a3bea7abb6aaa3e8a5a9ab" class="contact-link">✉ Email Me</a>
+    <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">in LinkedIn</a>
+    <a href="https://github.com/yourusername" class="contact-link" target="_blank">⌥ GitHub</a>
+  </div>
+</section>
+
+<footer>© 3/17/2026 Vishvesh Sharad Tendle · AI & ML Professional Portfolio · Workshop 1</footer>
