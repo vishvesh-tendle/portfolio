@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Vishvesh Sharad Tendle — AI & ML Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -20,7 +20,7 @@
   --white:#ffffff;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.5}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.5}
 
 /* NAV */
 nav{
@@ -31,7 +31,8 @@ nav{
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
-.nav-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;letter-spacing:-0.01em}
+.nav-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-0.01em;text-decoration:none;color:var(--text);cursor:pointer;transition:opacity 0.3s}
+.nav-name:hover{opacity:0.7}
 .nav-name span{color:var(--accent)}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{font-size:0.8rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
@@ -55,7 +56,7 @@ nav{
 .hero-tag::before{content:'●';font-size:0.5rem;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .hero h1{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:'Sora',sans-serif;
   font-size:clamp(2.4rem,4.5vw,3.8rem);
   font-weight:700;line-height:1.1;letter-spacing:-0.03em;
   margin-bottom:1rem;
@@ -97,7 +98,7 @@ nav{
   background:linear-gradient(transparent,rgba(10,10,15,0.95));
   padding:2rem 1.5rem 1.5rem;
 }
-.photo-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.2rem}
+.photo-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.2rem}
 .photo-role{font-size:0.78rem;color:var(--accent);font-weight:500;letter-spacing:0.06em;text-transform:uppercase}
 .status-dot{
   position:absolute;top:1rem;right:1rem;
@@ -114,7 +115,7 @@ nav{
   border-top:1px solid var(--border);
 }
 .stat-item{}
-.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent)}
+.stat-num{font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent)}
 .stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:500}
 
 /* SECTION */
@@ -126,7 +127,7 @@ section{padding:6rem 3rem}
 }
 .section-eyebrow::before{content:'';width:24px;height:2px;background:var(--accent)}
 .section-title{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:'Sora',sans-serif;
   font-size:clamp(1.8rem,3vw,2.6rem);
   font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem;
 }
@@ -154,7 +155,7 @@ section{padding:6rem 3rem}
   display:flex;align-items:center;justify-content:center;
   font-size:1.4rem;flex-shrink:0;
 }
-.bot-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem}
+.bot-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.2rem}
 .bot-tagline{font-size:0.78rem;color:var(--muted)}
 .live-badge{
   display:inline-flex;align-items:center;gap:0.4rem;
@@ -168,7 +169,7 @@ section{padding:6rem 3rem}
 .metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--border)}
 .metric{padding:1.5rem 1.75rem;border-right:1px solid var(--border)}
 .metric:last-child{border-right:none}
-.metric-val{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:0.2rem}
+.metric-val{font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:0.2rem}
 .metric-val.accent{color:var(--accent)}
 .metric-val.purple{color:#a78bfa}
 .metric-val.amber{color:var(--accent3)}
@@ -238,7 +239,7 @@ section{padding:6rem 3rem}
   background:rgba(0,229,255,0.1);
   display:flex;align-items:center;justify-content:center;font-size:1rem;
 }
-.lab-card-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem}
+.lab-card-title{font-family:'Sora',sans-serif;font-weight:600;font-size:0.95rem}
 .lab-card-sub{font-size:0.72rem;color:var(--muted)}
 .lab-card-body{padding:1.25rem 1.5rem}
 
@@ -276,7 +277,7 @@ section{padding:6rem 3rem}
   background:rgba(255,255,255,0.02);border:1px solid var(--border);
   border-radius:8px;padding:0.9rem 1rem;
 }
-.finding-num{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent);margin-bottom:0.25rem}
+.finding-num{font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent);margin-bottom:0.25rem}
 .finding-text{font-size:0.78rem;color:var(--muted);line-height:1.5}
 
 /* SKILLS */
@@ -290,9 +291,9 @@ section{padding:6rem 3rem}
 .skill-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem}
 .skill-icon{font-size:1.6rem}
 .skill-pct{
-  font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--accent);
+  font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:var(--accent);
 }
-.skill-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;margin-bottom:0.4rem}
+.skill-name{font-family:'Sora',sans-serif;font-weight:600;font-size:0.95rem;margin-bottom:0.4rem}
 .skill-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.75rem}
 .skill-tag{
   background:rgba(255,255,255,0.04);border:1px solid var(--border);
@@ -312,7 +313,7 @@ section{padding:6rem 3rem}
   font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
   color:var(--accent);margin-bottom:0.6rem;
 }
-.reflect-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:0.75rem}
+.reflect-title{font-family:'Sora',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:0.75rem}
 .reflect-body{font-size:0.85rem;color:var(--muted);line-height:1.7}
 .reflect-insight{
   display:flex;gap:0.75rem;align-items:flex-start;
@@ -441,14 +442,14 @@ footer{
     .tl-entry.milestone .tl-card { border-color: rgba(0,229,255,0.15); }
 
     .tl-year-badge {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 0.85rem; font-weight: 700;
       color: var(--accent); white-space: nowrap;
       min-width: 52px;
     }
     .tl-card-body {}
     .tl-card-title {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-weight: 600; font-size: 0.92rem; margin-bottom: 0.3rem;
     }
     .tl-card-desc {
@@ -501,7 +502,7 @@ footer{
       text-align: center;
     }
     .tl-stat-num {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 1.6rem; font-weight: 700; color: var(--accent);
     }
     .tl-stat-label {
@@ -531,13 +532,154 @@ footer{
       .tl-stats { grid-template-columns: 1fr 1fr; }
     }
 
+    /* ── VISUAL ENHANCEMENTS ── */
+
+    /* Upgraded color palette */
+    :root{
+      --accent:#00e5ff;
+      --accent2:#8b5cf6;
+      --accent3:#f59e0b;
+      --glow:rgba(0,229,255,0.15);
+    }
+
+    /* Grain texture overlay */
+    body::after{
+      content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events:none;z-index:9999;opacity:0.4;
+    }
+
+    /* Scroll reveal animations */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}
+    .reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}
+
+    /* Hero entrance animation */
+    .hero-left{animation:heroSlideIn 1s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0}
+    .hero-right{animation:heroSlideIn 1s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;opacity:0}
+    @keyframes heroSlideIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Glowing section dividers */
+    section{position:relative}
+    section::before{
+      content:'';position:absolute;top:0;left:10%;right:10%;height:1px;
+      background:linear-gradient(90deg,transparent,var(--glow),transparent);
+    }
+
+    /* Enhanced card hover effects */
+    .skill-card,.lab-card,.reflect-card,.contact-card,.cap-card{
+      transition:border-color 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .skill-card:hover,.reflect-card:hover{
+      box-shadow:0 8px 40px rgba(0,229,255,0.08),0 0 0 1px rgba(0,229,255,0.15);
+    }
+    .lab-card:hover{
+      border-color:rgba(0,229,255,0.2);
+      box-shadow:0 8px 40px rgba(0,229,255,0.06);
+    }
+
+    /* Button glow effects */
+    .btn-primary{
+      position:relative;overflow:hidden;
+      box-shadow:0 0 20px rgba(0,229,255,0.2);
+    }
+    .btn-primary::after{
+      content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+      background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);
+      opacity:0;transition:opacity 0.3s;
+    }
+    .btn-primary:hover::after{opacity:1}
+    .btn-primary:hover{box-shadow:0 0 30px rgba(0,229,255,0.35)}
+
+    .open-btn{
+      box-shadow:0 0 20px rgba(0,229,255,0.15);
+      transition:box-shadow 0.3s,transform 0.3s;
+    }
+    .open-btn:hover{box-shadow:0 0 30px rgba(0,229,255,0.3);transform:translateY(-2px)}
+
+    /* Photo card enhanced glow */
+    .photo-card{
+      box-shadow:0 0 80px rgba(0,229,255,0.12),0 0 40px rgba(139,92,246,0.1),0 20px 60px rgba(0,0,0,0.4);
+      transition:box-shadow 0.5s,transform 0.5s;
+    }
+    .photo-card:hover{
+      box-shadow:0 0 100px rgba(0,229,255,0.18),0 0 60px rgba(139,92,246,0.15),0 25px 70px rgba(0,0,0,0.5);
+      transform:translateY(-8px);
+    }
+
+    /* Stat number counter animation */
+    .stat-num,.metric-val,.finding-num,.tl-stat-num{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .metric-val.accent,.metric-val.purple,.metric-val.amber{
+      -webkit-text-fill-color:initial;background:none;
+    }
+
+    /* Progress bar animation */
+    .progress-fill{
+      animation:progressGrow 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+      transform-origin:left;
+    }
+    @keyframes progressGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* Nav glassmorphism enhancement */
+    nav{
+      background:rgba(10,10,15,0.7);
+      backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
+    }
+
+    /* Smooth scroll indicator */
+    .scroll-indicator{
+      position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+      animation:scrollBounce 2s infinite;
+    }
+    .scroll-indicator span{font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+    .scroll-indicator svg{width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2}
+    @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+    /* Footer enhancement */
+    footer{
+      background:linear-gradient(180deg,var(--surface),rgba(10,10,15,1));
+      padding:2.5rem;
+    }
+
+    /* Timeline card stagger */
+    .tl-entry{opacity:0;animation:tlSlideIn 0.6s forwards}
+    .tl-entry:nth-child(1){animation-delay:0.1s}
+    .tl-entry:nth-child(2){animation-delay:0.2s}
+    .tl-entry:nth-child(3){animation-delay:0.3s}
+    .tl-entry:nth-child(4){animation-delay:0.4s}
+    .tl-entry:nth-child(5){animation-delay:0.5s}
+    .tl-entry:nth-child(6){animation-delay:0.6s}
+    .tl-entry:nth-child(7){animation-delay:0.7s}
+    .tl-entry:nth-child(8){animation-delay:0.8s}
+    @keyframes tlSlideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+
+    /* Contact card hover glow */
+    .contact-card:hover{
+      box-shadow:0 4px 30px rgba(0,229,255,0.1);
+    }
+
+    /* Hero background animated gradient */
+    .hero{
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%,rgba(0,229,255,0.06) 0%,transparent 70%),
+        radial-gradient(ellipse 60% 60% at 20% 80%,rgba(139,92,246,0.07) 0%,transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 50%,rgba(245,158,11,0.03) 0%,transparent 70%);
+    }
+
     </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-name">Vishvesh<span>.</span>Tendle</div>
+  <a href="#" class="nav-name" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Vishvesh<span>.</span>Tendle</a>
   <ul class="nav-links">
     <li><a href="#artifact1">Artifact 1</a></li>
     <li><a href="#artifact2">Artifact 2</a></li>
@@ -573,6 +715,10 @@ footer{
       </div>
       <div class="status-dot">AI & ML Student</div>
     </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
   </div>
 </section>
 
@@ -1127,6 +1273,38 @@ function filterEra(era, btn) {
 <footer>
   <p>Vishvesh Sharad Tendle — AI &amp; ML Portfolio — 2026</p>
 </footer>
+
+<script>
+// Scroll reveal
+document.addEventListener('DOMContentLoaded', () => {
+  const reveals = document.querySelectorAll('.section-eyebrow, .section-title, .section-sub, .skill-card, .lab-card, .reflect-card, .contact-card, .tl-insight, .tl-stats');
+  reveals.forEach(el => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (scrollY >= top) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+});
+</script>
 
 </body>
 </html>
