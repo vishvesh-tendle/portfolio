@@ -254,6 +254,9 @@ section{padding:6rem 3rem}
   color:var(--accent);font-size:0.72rem;font-weight:600;
   padding:0.25rem 0.65rem;border-radius:6px;
 }
+.result-tag-amber{
+  background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);color:var(--accent3);
+}
 
 /* COMPARISON TABLE */
 .compare-table{width:100%;border-collapse:collapse;font-size:0.82rem}
@@ -362,7 +365,173 @@ footer{
   .skills-visual{grid-template-columns:1fr}
   .metrics-row{grid-template-columns:1fr 1fr}
 }
-</style>
+
+    /* ── ARTIFACT 3 — TIMELINE ── */
+    #artifact3 { background: var(--surface); }
+
+    .tl-wrapper {
+      position: relative;
+      margin-top: 2.5rem;
+      padding-bottom: 2rem;
+    }
+
+    /* Era filter tabs */
+    .era-tabs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .era-tab {
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.45rem 1rem; border-radius: 100px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .era-tab:hover, .era-tab.active {
+      background: var(--accent); border-color: var(--accent); color: #000;
+    }
+
+    /* Central line */
+    .tl-line {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .tl-line::before {
+      content: '';
+      position: absolute; left: 10px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+
+    /* Each milestone */
+    .tl-entry {
+      position: relative;
+      margin-bottom: 1.25rem;
+      opacity: 1; transition: opacity 0.3s;
+    }
+    .tl-entry.hidden { display: none; }
+
+    .tl-dot-outer {
+      position: absolute; left: -2.5rem;
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      top: 1.1rem; z-index: 1;
+      transition: border-color 0.2s;
+    }
+    .tl-entry:hover .tl-dot-outer { border-color: var(--accent); }
+    .tl-dot-inner {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--muted);
+      transition: background 0.2s;
+    }
+    .tl-entry.milestone .tl-dot-outer { border-color: var(--accent); }
+    .tl-entry.milestone .tl-dot-inner { background: var(--accent); }
+
+    /* Card */
+    .tl-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.1rem 1.4rem;
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 1rem; align-items: start;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .tl-card:hover { border-color: rgba(0,229,255,0.25); transform: translateX(4px); }
+    .tl-entry.milestone .tl-card { border-color: rgba(0,229,255,0.15); }
+
+    .tl-year-badge {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--accent); white-space: nowrap;
+      min-width: 52px;
+    }
+    .tl-card-body {}
+    .tl-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 0.92rem; margin-bottom: 0.3rem;
+    }
+    .tl-card-desc {
+      font-size: 0.8rem; color: var(--muted); line-height: 1.6;
+    }
+    .tl-card-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .tl-card-tag {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 0.18rem 0.55rem; border-radius: 4px;
+    }
+    .tag-research { background: rgba(124,58,237,0.12); color: #a78bfa; }
+    .tag-model    { background: rgba(0,229,255,0.08);  color: var(--accent); }
+    .tag-hardware { background: rgba(245,158,11,0.1);  color: var(--accent3); }
+    .tag-product  { background: rgba(34,197,94,0.1);   color: #4ade80; }
+    .tag-ethics   { background: rgba(248,113,113,0.1); color: #f87171; }
+
+    .tl-era-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); white-space: nowrap;
+      opacity: 0.7; margin-top: 0.25rem;
+    }
+
+    /* Impact bar */
+    .tl-impact {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.3rem; min-width: 36px;
+    }
+    .impact-label {
+      font-size: 0.58rem; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.06em; font-weight: 600;
+    }
+    .impact-bar-v {
+      width: 4px; border-radius: 2px; background: rgba(255,255,255,0.05);
+      height: 40px; position: relative; overflow: hidden;
+    }
+    .impact-fill {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      border-radius: 2px;
+      background: linear-gradient(to top, var(--accent), var(--accent2));
+    }
+
+    /* Stats row */
+    .tl-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin-bottom: 2rem;
+    }
+    .tl-stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem;
+      text-align: center;
+    }
+    .tl-stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--accent);
+    }
+    .tl-stat-label {
+      font-size: 0.72rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500;
+    }
+
+    /* Insight box */
+    .tl-insight {
+      background: var(--card); border: 1px solid rgba(0,229,255,0.15);
+      border-radius: 12px; padding: 1.5rem;
+      margin-top: 2rem;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem;
+    }
+    .tl-insight-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .tl-insight-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .tl-insight-text { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .tl-insight-text strong { color: var(--text); display: block; margin-bottom: 0.2rem; }
+
+    @media(max-width:900px) {
+      .tl-stats { grid-template-columns: 1fr 1fr; }
+      .tl-card { grid-template-columns: auto 1fr; }
+      .tl-impact { display: none; }
+      .tl-insight { grid-template-columns: 1fr; }
+    }
+    @media(max-width:600px) {
+      .tl-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    </style>
 </head>
 <body>
 
@@ -372,6 +541,7 @@ footer{
   <ul class="nav-links">
     <li><a href="#artifact1">Artifact 1</a></li>
     <li><a href="#artifact2">Artifact 2</a></li>
+    <li><a href="#artifact3">Artifact 3</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#reflection">Reflection</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -490,10 +660,10 @@ footer{
           <span class="result-tag">BI Specialist</span>
         </div>
         <div class="result-tags">
-          <span class="result-tag" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);color:var(--accent3)">Python</span>
-          <span class="result-tag" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);color:var(--accent3)">SQL</span>
-          <span class="result-tag" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);color:var(--accent3)">Statistics</span>
-          <span class="result-tag" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2);color:var(--accent3)">Tableau</span>
+          <span class="result-tag result-tag-amber">Python</span>
+          <span class="result-tag result-tag-amber">SQL</span>
+          <span class="result-tag result-tag-amber">Statistics</span>
+          <span class="result-tag result-tag-amber">Tableau</span>
         </div>
       </div>
     </div>
@@ -552,6 +722,321 @@ footer{
 
   </div>
 </section>
+
+
+<!-- ARTIFACT 3 -->
+<section id="artifact3">
+  <div class="section-eyebrow">Artifact 3 — Research & Synthesis</div>
+  <div class="section-title">AI & ML History: An Interactive Timeline</div>
+  <p class="section-sub">70+ years of breakthroughs mapped visually — from Turing's first question to today's generative AI era.</p>
+
+  <!-- Stats -->
+  <div class="tl-stats">
+    <div class="tl-stat-card"><div class="tl-stat-num">70+</div><div class="tl-stat-label">Years Covered</div></div>
+    <div class="tl-stat-card"><div class="tl-stat-num">18</div><div class="tl-stat-label">Key Milestones</div></div>
+    <div class="tl-stat-card"><div class="tl-stat-num">5</div><div class="tl-stat-label">Eras of AI</div></div>
+    <div class="tl-stat-card"><div class="tl-stat-num">∞</div><div class="tl-stat-label">Future Potential</div></div>
+  </div>
+
+  <!-- Era Filter Tabs -->
+  <div class="era-tabs">
+    <button class="era-tab active" onclick="filterEra('all', this)">All Eras</button>
+    <button class="era-tab" onclick="filterEra('foundations', this)">🏛 Foundations (1950–1979)</button>
+    <button class="era-tab" onclick="filterEra('expert', this)">🧠 Expert Systems (1980–1999)</button>
+    <button class="era-tab" onclick="filterEra('deep', this)">⚡ Deep Learning (2000–2016)</button>
+    <button class="era-tab" onclick="filterEra('llm', this)">🚀 LLM Era (2017–Now)</button>
+  </div>
+
+  <!-- Timeline -->
+  <div class="tl-wrapper">
+    <div class="tl-line">
+
+      <!-- 1950 -->
+      <div class="tl-entry milestone" data-era="foundations">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">1950</div><div class="tl-era-label">Foundations</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">The Turing Test — Alan Turing</div>
+            <div class="tl-card-desc">Turing publishes "Computing Machinery and Intelligence," asking "Can machines think?" and proposing an imitation game to evaluate machine intelligence — the philosophical foundation of all AI.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-research">Research</span><span class="tl-card-tag tag-ethics">Philosophy</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:100%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 1956 -->
+      <div class="tl-entry milestone" data-era="foundations">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">1956</div><div class="tl-era-label">Foundations</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Birth of Artificial Intelligence — Dartmouth Conference</div>
+            <div class="tl-card-desc">McCarthy, Minsky, Shannon and others convene at Dartmouth, coining the term "Artificial Intelligence" and launching it as a formal academic discipline.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-research">Research</span><span class="tl-card-tag tag-model">Milestone</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:100%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 1966 -->
+      <div class="tl-entry" data-era="foundations">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">1966</div><div class="tl-era-label">Foundations</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">ELIZA — First Chatbot (MIT)</div>
+            <div class="tl-card-desc">Joseph Weizenbaum creates ELIZA, the first natural language processing program that simulates conversation — a direct ancestor of modern AI assistants like CareerPath AI.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-product">Product</span><span class="tl-card-tag tag-model">NLP</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:60%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 1969 -->
+      <div class="tl-entry" data-era="foundations">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">1969</div><div class="tl-era-label">Foundations</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Perceptrons & the First AI Winter</div>
+            <div class="tl-card-desc">Minsky and Papert publish "Perceptrons," exposing the limitations of neural networks. Funding collapses. The first AI Winter begins — a decade of reduced research and broken promises.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-research">Theory</span><span class="tl-card-tag tag-ethics">Setback</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:50%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 1980 -->
+      <div class="tl-entry milestone" data-era="expert">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">1980s</div><div class="tl-era-label">Expert Systems</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Rise of Expert Systems</div>
+            <div class="tl-card-desc">Rule-based AI systems like XCON at DEC generate millions in savings. Corporations invest heavily in "expert systems" that encode human knowledge — AI's first commercial era.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-product">Commercial</span><span class="tl-card-tag tag-model">Rules-Based</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:65%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 1986 -->
+      <div class="tl-entry milestone" data-era="expert">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">1986</div><div class="tl-era-label">Expert Systems</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Backpropagation Revives Neural Networks</div>
+            <div class="tl-card-desc">Rumelhart, Hinton & Williams popularize the backpropagation algorithm, enabling multi-layer neural network training. Deep learning is born — though GPUs won't make it practical for another 25 years.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-model">Neural Nets</span><span class="tl-card-tag tag-research">Algorithm</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:90%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 1997 -->
+      <div class="tl-entry milestone" data-era="expert">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">1997</div><div class="tl-era-label">Expert Systems</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Deep Blue Defeats Kasparov — IBM</div>
+            <div class="tl-card-desc">IBM's Deep Blue becomes the first computer to defeat a reigning world chess champion, Garry Kasparov. A watershed moment showing AI could outperform humans in complex strategic tasks.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-product">Milestone</span><span class="tl-card-tag tag-model">Search AI</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:80%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2006 -->
+      <div class="tl-entry" data-era="deep">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2006</div><div class="tl-era-label">Deep Learning</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Deep Learning Renaissance — Hinton</div>
+            <div class="tl-card-desc">Geoffrey Hinton publishes groundbreaking work on deep belief networks, reigniting interest in multi-layer neural networks and launching the modern deep learning era.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-research">Research</span><span class="tl-card-tag tag-model">Deep Learning</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:85%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2011 -->
+      <div class="tl-entry" data-era="deep">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2011</div><div class="tl-era-label">Deep Learning</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">IBM Watson Wins Jeopardy!</div>
+            <div class="tl-card-desc">IBM's Watson defeats Jeopardy! champions Ken Jennings and Brad Rutter, demonstrating AI's ability to understand natural language questions and retrieve complex knowledge at superhuman speed.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-product">NLP</span><span class="tl-card-tag tag-model">Knowledge AI</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:70%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2012 -->
+      <div class="tl-entry milestone" data-era="deep">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2012</div><div class="tl-era-label">Deep Learning</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">AlexNet Wins ImageNet — GPU Deep Learning Proven</div>
+            <div class="tl-card-desc">Krizhevsky, Sutskever & Hinton's AlexNet wins ImageNet by a massive margin, proving deep convolutional networks on GPUs could solve real vision tasks at scale. Every modern vision AI descends from this moment.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-hardware">GPU</span><span class="tl-card-tag tag-model">Vision AI</span><span class="tl-card-tag tag-research">Breakthrough</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:100%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2014 -->
+      <div class="tl-entry" data-era="deep">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2014</div><div class="tl-era-label">Deep Learning</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">GANs — Generative Adversarial Networks</div>
+            <div class="tl-card-desc">Ian Goodfellow introduces GANs: two neural networks competing against each other, one generating fake data, one detecting it. This architecture becomes the foundation of AI image generation.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-model">Generative AI</span><span class="tl-card-tag tag-research">Architecture</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:88%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2016 -->
+      <div class="tl-entry" data-era="deep">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2016</div><div class="tl-era-label">Deep Learning</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">AlphaGo Defeats Lee Sedol — DeepMind</div>
+            <div class="tl-card-desc">DeepMind's AlphaGo beats world Go champion Lee Sedol 4-1. Go has more positions than atoms in the universe — this victory signals AI has moved beyond brute-force search into intuition-like reasoning.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-model">Reinforcement Learning</span><span class="tl-card-tag tag-product">Milestone</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:85%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2017 -->
+      <div class="tl-entry milestone" data-era="llm">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2017</div><div class="tl-era-label">LLM Era</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">"Attention Is All You Need" — The Transformer</div>
+            <div class="tl-card-desc">Google Brain researchers introduce the Transformer architecture. Self-attention replaces recurrence entirely. This single paper is the foundation of GPT, BERT, Claude, Gemini — every modern LLM in existence.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-model">Transformer</span><span class="tl-card-tag tag-research">Architecture</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:100%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2020 -->
+      <div class="tl-entry milestone" data-era="llm">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2020</div><div class="tl-era-label">LLM Era</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">GPT-3 — 175 Billion Parameters</div>
+            <div class="tl-card-desc">OpenAI releases GPT-3, a 175B parameter model that can write code, essays, poetry, and answer questions with human-like fluency. Few-shot learning demonstrates LLMs can generalize without fine-tuning.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-model">LLM</span><span class="tl-card-tag tag-research">Scale</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:95%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2022 ChatGPT -->
+      <div class="tl-entry milestone" data-era="llm">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2022</div><div class="tl-era-label">LLM Era</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">ChatGPT Reaches 100M Users in 60 Days</div>
+            <div class="tl-card-desc">OpenAI launches ChatGPT. It becomes the fastest-growing consumer application in history, reaching 100 million users in under two months. Generative AI goes mainstream overnight.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-product">Product</span><span class="tl-card-tag tag-model">GenAI</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:100%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2022 Diffusion -->
+      <div class="tl-entry" data-era="llm">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2022</div><div class="tl-era-label">LLM Era</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Stable Diffusion & Midjourney — AI Image Generation</div>
+            <div class="tl-card-desc">Latent diffusion models enable photorealistic image generation from text prompts. AI-generated imagery goes viral, sparking global conversations about creativity, copyright, and authenticity.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-product">Generative AI</span><span class="tl-card-tag tag-ethics">Ethics</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:85%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="tl-entry milestone" data-era="llm">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <div><div class="tl-year-badge">2024</div><div class="tl-era-label">LLM Era</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title">Multimodal AI & Agentic Systems</div>
+            <div class="tl-card-desc">GPT-4o, Gemini 1.5, and Claude 3 process text, images, audio, and video simultaneously. AI agents begin autonomously browsing the web, writing code, and completing multi-step tasks — the next frontier.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-model">Multimodal</span><span class="tl-card-tag tag-product">Agents</span><span class="tl-card-tag tag-research">Frontier</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:100%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Future -->
+      <div class="tl-entry" data-era="llm">
+        <div class="tl-dot-outer"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card" style="border-style:dashed;border-color:rgba(0,229,255,0.2)">
+          <div><div class="tl-year-badge" style="color:var(--muted)">Next?</div><div class="tl-era-label">Future</div></div>
+          <div class="tl-card-body">
+            <div class="tl-card-title" style="color:var(--muted)">AGI, Reasoning Models & Beyond</div>
+            <div class="tl-card-desc">The race toward Artificial General Intelligence accelerates. Reasoning models, self-improving systems, and AI-human collaboration redefine what intelligence means — and who builds it.</div>
+            <div class="tl-card-tags"><span class="tl-card-tag tag-ethics">AGI</span><span class="tl-card-tag tag-model">Reasoning</span><span class="tl-card-tag tag-ethics">Ethics</span></div>
+          </div>
+          <div class="tl-impact"><div class="impact-label">Impact</div><div class="impact-bar-v"><div class="impact-fill" style="height:100%;background:linear-gradient(to top,#f59e0b,#ef4444)"></div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Insights -->
+  <div class="tl-insight">
+    <div class="tl-insight-item">
+      <div class="tl-insight-icon">🔁</div>
+      <div class="tl-insight-text"><strong>AI Winters Are Real</strong>Hype cycles and crashes have happened before. Understanding this history helps calibrate expectations for today's AI boom.</div>
+    </div>
+    <div class="tl-insight-item">
+      <div class="tl-insight-icon">⚡</div>
+      <div class="tl-insight-text"><strong>Hardware Unlocks Software</strong>Every major AI leap — from backprop to AlexNet to GPT — was enabled by hardware improvements, especially GPUs and parallelism.</div>
+    </div>
+    <div class="tl-insight-item">
+      <div class="tl-insight-icon">🧬</div>
+      <div class="tl-insight-text"><strong>One Paper Changed Everything</strong>The 2017 Transformer paper is the ancestor of every modern LLM. Understanding architecture matters as much as using the tools.</div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+function filterEra(era, btn) {
+  document.querySelectorAll('.era-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tl-entry').forEach(entry => {
+    if (era === 'all' || entry.dataset.era === era) {
+      entry.classList.remove('hidden');
+    } else {
+      entry.classList.add('hidden');
+    }
+  });
+}
+</script>
 
 <!-- SKILLS -->
 <section id="skills">
@@ -633,13 +1118,15 @@ footer{
   <div class="section-title" style="text-align:center">Let's Connect</div>
   <p style="text-align:center;color:var(--muted);font-size:0.95rem;max-width:400px;margin:0 auto">Open to collaborations, feedback, and opportunities in AI & ML.</p>
   <div class="contact-cards">
-    <a href="mailto:vishveshtendle@gmail.com" class="contact-card"><div class="contact-card-icon">✉</div>vishveshtendle@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#a0d6c9d3c8d6c5d3c8d4c5cec4ccc5e0c7cdc1c9cc8ec3cfcd" class="contact-card"><div class="contact-card-icon">✉</div><span class="__cf_email__" data-cfemail="196f706a716f7c6a716d7c777d757c597e74787075377a7674">[email&#160;protected]</span></a>
     <a href="https://www.linkedin.com/in/vishvesh-tendle" target="_blank" class="contact-card"><div class="contact-card-icon">💼</div>LinkedIn</a>
     <a href="https://github.com/vishvesh-tendle" target="_blank" class="contact-card"><div class="contact-card-icon">💻</div>GitHub</a>
   </div>
 </section>
 
-<footer>© 2026 Vishvesh Sharad Tendle · AI & ML Professional Portfolio</footer>
+<footer>
+  <p>Vishvesh Sharad Tendle — AI &amp; ML Portfolio — 2026</p>
+</footer>
 
 </body>
 </html>
