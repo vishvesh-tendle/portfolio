@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AI Tools Comparison Dashboard 2026 — Vishvesh Tendle</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080810;
+  --surface:#0f0f1a;
+  --card:#14141f;
+  --card2:#1a1a28;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --accent:#00e5ff;
+  --accent2:#7c3aed;
+  --accent3:#f59e0b;
+  --green:#22c55e;
+  --red:#f87171;
+  --text:#f0f0f8;
+  --muted:#8888a8;
+  --white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.5}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 2.5rem;
+  background:rgba(8,8,16,0.9);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.topbar-left{display:flex;align-items:center;gap:1rem}
+.topbar-logo{
+  font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1rem;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.topbar-badge{
+  background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.25);
+  color:var(--accent);font-size:0.68rem;font-weight:700;
+  padding:0.25rem 0.65rem;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;
+}
+.back-btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  color:var(--muted);font-size:0.8rem;font-weight:500;text-decoration:none;
+  border:1px solid var(--border);padding:0.45rem 1rem;border-radius:8px;
+  transition:all 0.2s;
+}
+.back-btn:hover{color:var(--accent);border-color:rgba(0,229,255,0.3)}
+
+/* ── HERO ── */
+.hero{
+  padding:7rem 2.5rem 3rem;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 30%,rgba(0,229,255,0.07) 0%,transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 80%,rgba(124,58,237,0.07) 0%,transparent 70%);
+  border-bottom:1px solid var(--border);
+}
+.hero-inner{max-width:1200px;margin:0 auto}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);
+  color:var(--accent);font-size:0.7rem;font-weight:700;
+  padding:0.35rem 0.85rem;border-radius:100px;letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.hero-eyebrow::before{content:'●';font-size:0.45rem;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:800;
+  letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.75rem;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{font-size:0.95rem;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:1.5rem}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
+.meta-item{display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--muted)}
+.meta-item strong{color:var(--text)}
+.author-card{
+  display:flex;align-items:center;gap:0.85rem;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:0.85rem 1.25rem;flex-shrink:0;
+}
+.author-avatar{
+  width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:center top;
+  border:2px solid rgba(0,229,255,0.3);
+}
+.author-name{font-weight:700;font-size:0.88rem}
+.author-role{font-size:0.7rem;color:var(--muted)}
+
+/* ── MAIN LAYOUT ── */
+.main{max-width:1200px;margin:0 auto;padding:2.5rem}
+
+/* ── KPI ROW ── */
+.kpi-row{display:grid;grid-template-columns:repeat(6,1fr);gap:0.75rem;margin-bottom:2rem}
+.kpi{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:1rem 1.1rem;
+  transition:border-color 0.2s;
+}
+.kpi:hover{border-color:rgba(0,229,255,0.25)}
+.kpi-val{
+  font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:800;
+  color:var(--accent);line-height:1;margin-bottom:0.3rem;
+}
+.kpi-val.purple{color:#a78bfa}
+.kpi-val.amber{color:var(--accent3)}
+.kpi-val.green{color:var(--green)}
+.kpi-label{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;font-weight:600}
+
+/* ── FILTER TABS ── */
+.filter-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.75rem;align-items:center}
+.filter-label{font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-right:0.5rem}
+.ftab{
+  background:var(--card);border:1px solid var(--border);
+  color:var(--muted);font-size:0.75rem;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  padding:0.4rem 1rem;border-radius:100px;cursor:pointer;transition:all 0.2s;
+}
+.ftab:hover{border-color:var(--accent);color:var(--accent)}
+.ftab.active{background:var(--accent);border-color:var(--accent);color:#000}
+
+/* ── TOOL GRID ── */
+.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.tool-card{
+  background:var(--card);border:2px solid var(--border);
+  border-radius:16px;overflow:hidden;cursor:pointer;
+  transition:border-color 0.25s,transform 0.2s,box-shadow 0.25s;
+}
+.tool-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.tool-card.active{border-color:var(--accent);box-shadow:0 0 30px rgba(0,229,255,0.12)}
+.tc-header{padding:1.25rem 1.4rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.tc-identity{display:flex;align-items:center;gap:0.75rem}
+.tc-logo{font-size:1.6rem}
+.tc-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem}
+.tc-maker{font-size:0.7rem;color:var(--muted)}
+.tc-score-badge{
+  font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;
+  color:var(--accent);line-height:1;
+}
+.tc-score-sub{font-size:0.6rem;color:var(--muted);text-align:right;text-transform:uppercase;letter-spacing:0.06em}
+.tc-bars{padding:1rem 1.4rem}
+.tc-bar-row{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem}
+.tc-bar-label{font-size:0.68rem;color:var(--muted);width:90px;flex-shrink:0}
+.tc-bar-track{flex:1;height:5px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.tc-bar-fill{height:100%;border-radius:3px;transition:width 0.5s cubic-bezier(.4,0,.2,1)}
+.tc-bar-num{font-size:0.68rem;font-weight:700;color:var(--muted);width:24px;text-align:right;flex-shrink:0}
+.tc-footer{padding:0.75rem 1.4rem;border-top:1px solid var(--border);display:flex;gap:0.35rem;flex-wrap:wrap}
+.tc-tag{font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:4px;letter-spacing:0.04em}
+.tc-tag.strength{background:rgba(0,229,255,0.08);color:var(--accent);border:1px solid rgba(0,229,255,0.15)}
+.tc-tag.new2026{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2)}
+
+/* ── COMPARISON TABLE ── */
+.compare-section{margin-bottom:2rem}
+.compare-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:1rem;
+}
+.section-title-sm{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;
+}
+.table-wrap{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;overflow-x:auto;
+}
+table.ctable{width:100%;border-collapse:collapse;min-width:700px}
+table.ctable thead tr{background:rgba(255,255,255,0.02)}
+table.ctable th{
+  padding:0.75rem 1rem;text-align:left;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;
+}
+table.ctable th.center{text-align:center}
+table.ctable td{
+  padding:0.85rem 1rem;font-size:0.83rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  color:var(--muted);
+}
+table.ctable td.dim-cell{color:var(--text);font-weight:500}
+table.ctable td.center{text-align:center}
+table.ctable tr:last-child td{border-bottom:none}
+table.ctable tr:hover td{background:rgba(255,255,255,0.015)}
+.chip{
+  display:inline-block;padding:0.22rem 0.6rem;
+  border-radius:6px;font-family:'Space Grotesk',sans-serif;
+  font-weight:700;font-size:0.78rem;
+}
+.chip-s{background:rgba(0,229,255,0.1);color:var(--accent)}
+.chip-a{background:rgba(34,197,94,0.1);color:var(--green)}
+.chip-b{background:rgba(245,158,11,0.1);color:var(--accent3)}
+.chip-c{background:rgba(248,113,113,0.1);color:var(--red)}
+.winner-icon{margin-left:0.3rem;font-size:0.75rem}
+
+/* ── USE CASE PICKER ── */
+.usecase-section{margin-bottom:2rem}
+.usecase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem}
+.uc-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:1.1rem;
+  cursor:pointer;transition:all 0.2s;
+}
+.uc-card:hover,.uc-card.active{border-color:var(--accent);background:rgba(0,229,255,0.04)}
+.uc-icon{font-size:1.5rem;margin-bottom:0.5rem}
+.uc-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;margin-bottom:0.3rem}
+.uc-desc{font-size:0.72rem;color:var(--muted);line-height:1.5;margin-bottom:0.75rem}
+.uc-winner{
+  display:inline-flex;align-items:center;gap:0.35rem;
+  font-size:0.72rem;font-weight:700;
+  color:var(--green);
+}
+.uc-winner-label{font-size:0.62rem;color:var(--muted);display:block;margin-top:0.1rem}
+
+/* ── RADAR CHART SECTION ── */
+.radar-section{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:1.75rem;margin-bottom:2rem;
+}
+.radar-inner{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+canvas#radarChart{max-width:100%}
+.radar-legend{display:flex;flex-direction:column;gap:0.75rem}
+.legend-item{display:flex;align-items:center;gap:0.75rem}
+.legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.legend-name{font-weight:600;font-size:0.88rem}
+.legend-score{font-size:0.78rem;color:var(--muted)}
+
+/* ── INSIGHTS ── */
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.ins-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:1.4rem;
+}
+.ins-card.featured{border-color:rgba(0,229,255,0.2);background:rgba(0,229,255,0.03)}
+.ins-icon{font-size:1.5rem;margin-bottom:0.6rem}
+.ins-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.92rem;margin-bottom:0.4rem}
+.ins-body{font-size:0.78rem;color:var(--muted);line-height:1.65}
+.ins-body strong{color:var(--text)}
+
+/* ── METHODOLOGY ── */
+.method-section{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:1.75rem;margin-bottom:2rem;
+}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.25rem}
+.method-item{display:flex;gap:0.75rem;align-items:flex-start}
+.method-num{
+  font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;
+  color:var(--accent);flex-shrink:0;width:28px;
+}
+.method-text{font-size:0.8rem;color:var(--muted);line-height:1.6}
+.method-text strong{color:var(--text);display:block;margin-bottom:0.15rem}
+
+/* ── FOOTER ── */
+.dash-footer{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-left{font-size:0.75rem;color:var(--muted)}
+.footer-left strong{color:var(--text)}
+.portfolio-link{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--accent);color:#000;font-weight:700;font-size:0.8rem;
+  padding:0.55rem 1.25rem;border-radius:8px;text-decoration:none;
+  transition:opacity 0.2s;
+}
+.portfolio-link:hover{opacity:0.85}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .kpi-row{grid-template-columns:repeat(3,1fr)}
+  .tool-grid{grid-template-columns:1fr 1fr}
+  .usecase-grid{grid-template-columns:1fr 1fr}
+  .insights-grid{grid-template-columns:1fr}
+  .method-grid{grid-template-columns:1fr}
+  .radar-inner{grid-template-columns:1fr}
+  .main{padding:1.5rem}
+  .topbar{padding:0.9rem 1.25rem}
+}
+@media(max-width:600px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .tool-grid{grid-template-columns:1fr}
+  .usecase-grid{grid-template-columns:1fr}
+  .hero{padding:6rem 1.25rem 2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">AI Tools Dashboard</div>
+    <span class="topbar-badge">2026 Edition</span>
+  </div>
+  <a href="index.html" class="back-btn">← Back to Portfolio</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div>
+        <div class="hero-eyebrow">Artifact 4 · Evaluation & Strategy</div>
+        <h1>AI Tools Comparison<br/><span>Dashboard 2026</span></h1>
+        <p class="hero-sub">A comprehensive evaluation of the top AI platforms — scored across 6 dimensions with real-world use case recommendations to help you choose the right tool for any task.</p>
+        <div class="hero-meta">
+          <div class="meta-item"><strong>7</strong>&nbsp;Platforms</div>
+          <div class="meta-item"><strong>6</strong>&nbsp;Dimensions</div>
+          <div class="meta-item"><strong>42+</strong>&nbsp;Data Points</div>
+          <div class="meta-item"><strong>April 2026</strong>&nbsp;Last Updated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">7</div><div class="kpi-label">Tools Reviewed</div></div>
+    <div class="kpi"><div class="kpi-val purple">6</div><div class="kpi-label">Dimensions</div></div>
+    <div class="kpi"><div class="kpi-val amber">42+</div><div class="kpi-label">Data Points</div></div>
+    <div class="kpi"><div class="kpi-val green">3</div><div class="kpi-label">New in 2026</div></div>
+    <div class="kpi"><div class="kpi-val">Claude</div><div class="kpi-label">Top Scorer</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#f87171">Free</div><div class="kpi-label">Best Free Tier</div></div>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter-row">
+    <span class="filter-label">Filter by:</span>
+    <button class="ftab active" onclick="filterTools('all',this)">All Tools</button>
+    <button class="ftab" onclick="filterTools('free',this)">🆓 Free Tier</button>
+    <button class="ftab" onclick="filterTools('coding',this)">💻 Best for Coding</button>
+    <button class="ftab" onclick="filterTools('writing',this)">✍ Best for Writing</button>
+    <button class="ftab" onclick="filterTools('research',this)">🔍 Best for Research</button>
+    <button class="ftab" onclick="filterTools('new',this)">🆕 New in 2026</button>
+  </div>
+
+  <!-- Tool Cards -->
+  <div class="tool-grid" id="toolGrid">
+
+    <!-- ChatGPT -->
+    <div class="tool-card active" data-key="chatgpt" data-tags="free coding writing" onclick="activateTool(this)">
+      <div class="tc-header">
+        <div class="tc-identity">
+          <div class="tc-logo">🤖</div>
+          <div><div class="tc-name">ChatGPT</div><div class="tc-maker">OpenAI · GPT-4o + o3</div></div>
+        </div>
+        <div><div class="tc-score-badge" id="score-chatgpt">91</div><div class="tc-score-sub">/100</div></div>
+      </div>
+      <div class="tc-bars" id="bars-chatgpt"></div>
+      <div class="tc-footer">
+        <span class="tc-tag strength">Coding</span>
+        <span class="tc-tag strength">Reasoning</span>
+        <span class="tc-tag new2026">o3 Model</span>
+      </div>
+    </div>
+
+    <!-- Claude -->
+    <div class="tool-card" data-key="claude" data-tags="free coding writing" onclick="activateTool(this)">
+      <div class="tc-header">
+        <div class="tc-identity">
+          <div class="tc-logo">🧡</div>
+          <div><div class="tc-name">Claude</div><div class="tc-maker">Anthropic · Claude 3.7</div></div>
+        </div>
+        <div><div class="tc-score-badge" id="score-claude">93</div><div class="tc-score-sub">/100</div></div>
+      </div>
+      <div class="tc-bars" id="bars-claude"></div>
+      <div class="tc-footer">
+        <span class="tc-tag strength">Writing</span>
+        <span class="tc-tag strength">Analysis</span>
+        <span class="tc-tag new2026">Extended Thinking</span>
+      </div>
+    </div>
+
+    <!-- Gemini -->
+    <div class="tool-card" data-key="gemini" data-tags="free research" onclick="activateTool(this)">
+      <div class="tc-header">
+        <div class="tc-identity">
+          <div class="tc-logo">✨</div>
+          <div><div class="tc-name">Gemini</div><div class="tc-maker">Google · Gemini 2.0</div></div>
+        </div>
+        <div><div class="tc-score-badge" id="score-gemini">89</div><div class="tc-score-sub">/100</div></div>
+      </div>
+      <div class="tc-bars" id="bars-gemini"></div>
+      <div class="tc-footer">
+        <span class="tc-tag strength">Multimodal</span>
+        <span class="tc-tag strength">Live Search</span>
+        <span class="tc-tag new2026">Gemini 2.0</span>
+      </div>
+    </div>
+
+    <!-- Copilot -->
+    <div class="tool-card" data-key="copilot" data-tags="free coding" onclick="activateTool(this)">
+      <div class="tc-header">
+        <div class="tc-identity">
+          <div class="tc-logo">🪟</div>
+          <div><div class="tc-name">Copilot</div><div class="tc-maker">Microsoft · GPT-4o</div></div>
+        </div>
+        <div><div class="tc-score-badge" id="score-copilot">84</div><div class="tc-score-sub">/100</div></div>
+      </div>
+      <div class="tc-bars" id="bars-copilot"></div>
+      <div class="tc-footer">
+        <span class="tc-tag strength">Office 365</span>
+        <span class="tc-tag strength">Free Access</span>
+      </div>
+    </div>
+
+    <!-- Perplexity -->
+    <div class="tool-card" data-key="perplexity" data-tags="free research" onclick="activateTool(this)">
+      <div class="tc-header">
+        <div class="tc-identity">
+          <div class="tc-logo">🔍</div>
+          <div><div class="tc-name">Perplexity</div><div class="tc-maker">Perplexity AI · Sonar Pro</div></div>
+        </div>
+        <div><div class="tc-score-badge" id="score-perplexity">80</div><div class="tc-score-sub">/100</div></div>
+      </div>
+      <div class="tc-bars" id="bars-perplexity"></div>
+      <div class="tc-footer">
+        <span class="tc-tag strength">Cited Sources</span>
+        <span class="tc-tag strength">Live Web</span>
+      </div>
+    </div>
+
+    <!-- Grok -->
+    <div class="tool-card" data-key="grok" data-tags="free research new" onclick="activateTool(this)">
+      <div class="tc-header">
+        <div class="tc-identity">
+          <div class="tc-logo">𝕏</div>
+          <div><div class="tc-name">Grok</div><div class="tc-maker">xAI · Grok 3</div></div>
+        </div>
+        <div><div class="tc-score-badge" id="score-grok">85</div><div class="tc-score-sub">/100</div></div>
+      </div>
+      <div class="tc-bars" id="bars-grok"></div>
+      <div class="tc-footer">
+        <span class="tc-tag strength">Real-Time X Data</span>
+        <span class="tc-tag new2026">Grok 3 (2026)</span>
+      </div>
+    </div>
+
+    <!-- DeepSeek -->
+    <div class="tool-card" data-key="deepseek" data-tags="free coding new" onclick="activateTool(this)">
+      <div class="tc-header">
+        <div class="tc-identity">
+          <div class="tc-logo">🐋</div>
+          <div><div class="tc-name">DeepSeek</div><div class="tc-maker">DeepSeek · R2</div></div>
+        </div>
+        <div><div class="tc-score-badge" id="score-deepseek">87</div><div class="tc-score-sub">/100</div></div>
+      </div>
+      <div class="tc-bars" id="bars-deepseek"></div>
+      <div class="tc-footer">
+        <span class="tc-tag strength">Open Source</span>
+        <span class="tc-tag strength">STEM / Coding</span>
+        <span class="tc-tag new2026">New in 2026</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Radar Chart -->
+  <div class="radar-section">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div class="section-title-sm">Radar Comparison — Top 5 Tools</div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:0.25rem">Scores across all 6 dimensions visualized</div>
+      </div>
+    </div>
+    <div class="radar-inner">
+      <canvas id="radarChart" width="400" height="380"></canvas>
+      <div>
+        <div class="radar-legend" id="radarLegend"></div>
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.12);border-radius:8px">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem">2026 Insight</div>
+          <div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Claude leads in language & reasoning. ChatGPT dominates coding with o3. DeepSeek surprises as an open-source contender. No single tool wins every dimension.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Head-to-head table -->
+  <div class="compare-section">
+    <div class="compare-header">
+      <div class="section-title-sm">Full Head-to-Head Scorecard</div>
+      <div style="font-size:0.75rem;color:var(--muted)">🏆 = top score per row</div>
+    </div>
+    <div class="table-wrap">
+      <table class="ctable">
+        <thead>
+          <tr>
+            <th style="min-width:150px">Dimension</th>
+            <th class="center">🤖 ChatGPT</th>
+            <th class="center">🧡 Claude</th>
+            <th class="center">✨ Gemini</th>
+            <th class="center">🪟 Copilot</th>
+            <th class="center">🔍 Perplexity</th>
+            <th class="center">𝕏 Grok</th>
+            <th class="center">🐋 DeepSeek</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim-cell">Language Quality</td>
+            <td class="center"><span class="chip chip-s">91</span></td>
+            <td class="center"><span class="chip chip-s">95</span><span class="winner-icon">🏆</span></td>
+            <td class="center"><span class="chip chip-s">88</span></td>
+            <td class="center"><span class="chip chip-b">81</span></td>
+            <td class="center"><span class="chip chip-b">74</span></td>
+            <td class="center"><span class="chip chip-b">82</span></td>
+            <td class="center"><span class="chip chip-b">79</span></td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Coding Ability</td>
+            <td class="center"><span class="chip chip-s">95</span><span class="winner-icon">🏆</span></td>
+            <td class="center"><span class="chip chip-s">92</span></td>
+            <td class="center"><span class="chip chip-s">86</span></td>
+            <td class="center"><span class="chip chip-s">89</span></td>
+            <td class="center"><span class="chip chip-b">62</span></td>
+            <td class="center"><span class="chip chip-b">80</span></td>
+            <td class="center"><span class="chip chip-s">93</span></td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Reasoning & Logic</td>
+            <td class="center"><span class="chip chip-s">93</span></td>
+            <td class="center"><span class="chip chip-s">94</span><span class="winner-icon">🏆</span></td>
+            <td class="center"><span class="chip chip-s">86</span></td>
+            <td class="center"><span class="chip chip-b">80</span></td>
+            <td class="center"><span class="chip chip-b">70</span></td>
+            <td class="center"><span class="chip chip-b">83</span></td>
+            <td class="center"><span class="chip chip-s">91</span></td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Multimodal (Vision)</td>
+            <td class="center"><span class="chip chip-s">90</span></td>
+            <td class="center"><span class="chip chip-s">86</span></td>
+            <td class="center"><span class="chip chip-s">93</span><span class="winner-icon">🏆</span></td>
+            <td class="center"><span class="chip chip-b">82</span></td>
+            <td class="center"><span class="chip chip-c">58</span></td>
+            <td class="center"><span class="chip chip-b">75</span></td>
+            <td class="center"><span class="chip chip-b">72</span></td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Live Web / Search</td>
+            <td class="center"><span class="chip chip-b">80</span></td>
+            <td class="center"><span class="chip chip-b">78</span></td>
+            <td class="center"><span class="chip chip-s">90</span></td>
+            <td class="center"><span class="chip chip-s">87</span></td>
+            <td class="center"><span class="chip chip-s">96</span><span class="winner-icon">🏆</span></td>
+            <td class="center"><span class="chip chip-s">88</span></td>
+            <td class="center"><span class="chip chip-b">65</span></td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Free Access & UX</td>
+            <td class="center"><span class="chip chip-s">86</span></td>
+            <td class="center"><span class="chip chip-s">86</span></td>
+            <td class="center"><span class="chip chip-s">89</span></td>
+            <td class="center"><span class="chip chip-s">92</span><span class="winner-icon">🏆</span></td>
+            <td class="center"><span class="chip chip-s">88</span></td>
+            <td class="center"><span class="chip chip-s">87</span></td>
+            <td class="center"><span class="chip chip-s">90</span></td>
+          </tr>
+          <tr style="background:rgba(255,255,255,0.02)">
+            <td class="dim-cell" style="font-weight:700;color:var(--accent)">Overall Score</td>
+            <td class="center"><span class="chip chip-s" style="font-size:0.88rem">91</span></td>
+            <td class="center"><span class="chip chip-s" style="font-size:0.88rem;background:rgba(0,229,255,0.2)">93</span><span class="winner-icon">🏆</span></td>
+            <td class="center"><span class="chip chip-s" style="font-size:0.88rem">89</span></td>
+            <td class="center"><span class="chip chip-b" style="font-size:0.88rem">84</span></td>
+            <td class="center"><span class="chip chip-b" style="font-size:0.88rem">80</span></td>
+            <td class="center"><span class="chip chip-s" style="font-size:0.88rem">85</span></td>
+            <td class="center"><span class="chip chip-s" style="font-size:0.88rem">87</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Use Case Picker -->
+  <div class="usecase-section">
+    <div class="section-title-sm" style="margin-bottom:1rem">Which Tool Should You Use?</div>
+    <div class="usecase-grid">
+      <div class="uc-card active" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">✍️</div>
+        <div class="uc-name">Writing & Editing</div>
+        <div class="uc-desc">Essays, reports, emails, creative content, long-form documents</div>
+        <div class="uc-winner">🏆 Claude 3.7</div>
+        <span class="uc-winner-label">Best-in-class language quality & nuance</span>
+      </div>
+      <div class="uc-card" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">💻</div>
+        <div class="uc-name">Coding & Dev</div>
+        <div class="uc-desc">Debugging, code generation, architecture, technical explanations</div>
+        <div class="uc-winner">🏆 ChatGPT o3</div>
+        <span class="uc-winner-label">Top coding scores + GitHub Copilot integration</span>
+      </div>
+      <div class="uc-card" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">🔍</div>
+        <div class="uc-name">Research</div>
+        <div class="uc-desc">Real-time facts, citations, news, literature reviews</div>
+        <div class="uc-winner">🏆 Perplexity</div>
+        <span class="uc-winner-label">Live web search with cited sources every time</span>
+      </div>
+      <div class="uc-card" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">🖼️</div>
+        <div class="uc-name">Multimodal</div>
+        <div class="uc-desc">Image analysis, video understanding, chart reading, visual Q&A</div>
+        <div class="uc-winner">🏆 Gemini 2.0</div>
+        <span class="uc-winner-label">Highest vision scores + native Google integration</span>
+      </div>
+      <div class="uc-card" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">💼</div>
+        <div class="uc-name">Office / Workplace</div>
+        <div class="uc-desc">Excel, Word, PowerPoint, Teams, Outlook automation</div>
+        <div class="uc-winner">🏆 Microsoft Copilot</div>
+        <span class="uc-winner-label">Deep Microsoft 365 integration, free to most users</span>
+      </div>
+      <div class="uc-card" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">🧪</div>
+        <div class="uc-name">STEM & Math</div>
+        <div class="uc-desc">Complex reasoning, scientific problems, math proofs, data analysis</div>
+        <div class="uc-winner">🏆 DeepSeek R2</div>
+        <span class="uc-winner-label">Open-source, top STEM benchmarks, free to use</span>
+      </div>
+      <div class="uc-card" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">📱</div>
+        <div class="uc-name">Social & Trends</div>
+        <div class="uc-desc">X/Twitter trends, viral content, current events, culture</div>
+        <div class="uc-winner">🏆 Grok 3</div>
+        <span class="uc-winner-label">Real-time X data and unfiltered trend analysis</span>
+      </div>
+      <div class="uc-card" onclick="this.closest('.usecase-grid').querySelectorAll('.uc-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+        <div class="uc-icon">💸</div>
+        <div class="uc-name">Best Free Option</div>
+        <div class="uc-desc">No budget? Best free tier with fewest limitations</div>
+        <div class="uc-winner">🏆 Gemini / Copilot</div>
+        <span class="uc-winner-label">Generous free tiers with strong core capabilities</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insights -->
+  <div class="insights-grid">
+    <div class="ins-card featured">
+      <div class="ins-icon">📈</div>
+      <div class="ins-title">2026: Reasoning Models Dominate</div>
+      <div class="ins-body">OpenAI's o3 and Anthropic's <strong>extended thinking</strong> mode have dramatically raised the bar for complex reasoning. Tasks that required human experts in 2024 can now be handled by AI with chain-of-thought prompting.</div>
+    </div>
+    <div class="ins-card featured">
+      <div class="ins-icon">🐋</div>
+      <div class="ins-title">DeepSeek Changes the Game</div>
+      <div class="ins-body">DeepSeek R2 scores <strong>93 in coding</strong> and <strong>91 in reasoning</strong> — rivaling GPT-4o — while being fully open-source. It proves world-class AI no longer requires billion-dollar proprietary infrastructure.</div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-icon">🎯</div>
+      <div class="ins-title">The Right Tool Wins Every Time</div>
+      <div class="ins-body">Top AI practitioners in 2026 don't debate which AI is "best." They use <strong>Claude for writing</strong>, <strong>ChatGPT for code</strong>, <strong>Perplexity for research</strong>, and <strong>Gemini for visual tasks</strong>. Tool fluency is the real skill.</div>
+    </div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="method-section">
+    <div class="section-title-sm">Methodology & Scoring Criteria</div>
+    <div style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem">How scores were determined for this evaluation</div>
+    <div class="method-grid">
+      <div class="method-item"><div class="method-num">01</div><div class="method-text"><strong>Benchmark Cross-Reference</strong>Scores synthesized from MMLU, HumanEval, MATH, and LMSYS Chatbot Arena leaderboard results as of Q1 2026.</div></div>
+      <div class="method-item"><div class="method-num">02</div><div class="method-text"><strong>Hands-On Prompt Testing</strong>Each tool was tested with identical prompts across writing, coding, reasoning, and research tasks. Outputs were rated for accuracy, depth, and clarity.</div></div>
+      <div class="method-item"><div class="method-num">03</div><div class="method-text"><strong>Accessibility Evaluation</strong>Free tier limits, rate limits, signup friction, and mobile/desktop UX were evaluated independently from AI capability scores.</div></div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="dash-footer">
+  <div class="footer-left">
+    <strong>Vishvesh Sharad Tendle</strong> · AI & ML Portfolio · April 2026<br/>
+    Artifact 4: AI Tools Comparison Dashboard
+  </div>
+  <a href="index.html" class="portfolio-link">← View Full Portfolio</a>
+</div>
+
+<script>
+// ── TOOL DATA ──
+const tools = {
+  chatgpt:   { overall:91, dims:[91,95,93,90,80,86], color:'rgba(0,229,255,0.8)' },
+  claude:    { overall:93, dims:[95,92,94,86,78,86], color:'rgba(245,158,11,0.8)' },
+  gemini:    { overall:89, dims:[88,86,86,93,90,89], color:'rgba(124,58,237,0.8)' },
+  copilot:   { overall:84, dims:[81,89,80,82,87,92], color:'rgba(248,113,113,0.8)' },
+  perplexity:{ overall:80, dims:[74,62,70,58,96,88], color:'rgba(34,197,94,0.8)' },
+  grok:      { overall:85, dims:[82,80,83,75,88,87], color:'rgba(168,85,247,0.8)' },
+  deepseek:  { overall:87, dims:[79,93,91,72,65,90], color:'rgba(251,191,36,0.8)' }
+};
+
+const dimLabels = ['Language','Coding','Reasoning','Multimodal','Web Search','Free Access'];
+const toolMeta = {
+  chatgpt:   { logo:'🤖', name:'ChatGPT'    },
+  claude:    { logo:'🧡', name:'Claude'     },
+  gemini:    { logo:'✨', name:'Gemini'     },
+  copilot:   { logo:'🪟', name:'Copilot'   },
+  perplexity:{ logo:'🔍', name:'Perplexity' },
+  grok:      { logo:'𝕏',  name:'Grok'      },
+  deepseek:  { logo:'🐋', name:'DeepSeek'  }
+};
+
+// Render score bars for each tool card
+Object.keys(tools).forEach(key => {
+  const el = document.getElementById('bars-' + key);
+  if (!el) return;
+  let html = '';
+  dimLabels.forEach((dim, i) => {
+    const val = tools[key].dims[i];
+    const pct = val + '%';
+    const col = val >= 90 ? 'linear-gradient(90deg,#00e5ff,#7c3aed)'
+              : val >= 80 ? 'linear-gradient(90deg,#f59e0b,#ef4444)'
+              : 'linear-gradient(90deg,#6b7280,#4b5563)';
+    html += `<div class="tc-bar-row">
+      <div class="tc-bar-label">${dim}</div>
+      <div class="tc-bar-track"><div class="tc-bar-fill" style="width:${pct};background:${col}"></div></div>
+      <div class="tc-bar-num">${val}</div>
+    </div>`;
+  });
+  el.innerHTML = html;
+});
+
+// Tool card click
+function activateTool(card) {
+  document.querySelectorAll('.tool-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+}
+
+// Filter tabs
+function filterTools(type, btn) {
+  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tool-card').forEach(card => {
+    const tags = card.dataset.tags || '';
+    card.style.display = (type === 'all' || tags.includes(type)) ? '' : 'none';
+  });
+}
+
+// ── RADAR CHART ──
+const radarKeys = ['chatgpt','claude','gemini','copilot','deepseek'];
+const cx = 200, cy = 190, r = 140;
+const numAxes = 6;
+
+function drawRadar() {
+  const canvas = document.getElementById('radarChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+
+  // Background rings
+  for (let ring = 1; ring <= 5; ring++) {
+    const rr = (r * ring) / 5;
+    ctx.beginPath();
+    for (let i = 0; i <= numAxes; i++) {
+      const angle = (Math.PI * 2 * i) / numAxes - Math.PI / 2;
+      const x = cx + rr * Math.cos(angle);
+      const y = cy + rr * Math.sin(angle);
+      i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Axis lines + labels
+  dimLabels.forEach((label, i) => {
+    const angle = (Math.PI * 2 * i) / numAxes - Math.PI / 2;
+    const x2 = cx + r * Math.cos(angle);
+    const y2 = cy + r * Math.sin(angle);
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x2, y2);
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1; ctx.stroke();
+
+    const lx = cx + (r + 20) * Math.cos(angle);
+    const ly = cy + (r + 20) * Math.sin(angle);
+    ctx.fillStyle = '#8888a8'; ctx.font = '11px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(label, lx, ly);
+  });
+
+  // Tool polygons
+  radarKeys.forEach(key => {
+    const tool = tools[key];
+    ctx.beginPath();
+    tool.dims.forEach((val, i) => {
+      const frac = val / 100;
+      const angle = (Math.PI * 2 * i) / numAxes - Math.PI / 2;
+      const x = cx + r * frac * Math.cos(angle);
+      const y = cy + r * frac * Math.sin(angle);
+      i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    });
+    ctx.closePath();
+    ctx.strokeStyle = tool.color; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = tool.color.replace('0.8','0.08'); ctx.fill();
+  });
+}
+drawRadar();
+
+// Radar legend
+const legendEl = document.getElementById('radarLegend');
+if (legendEl) {
+  legendEl.innerHTML = radarKeys.map(key => {
+    const m = toolMeta[key]; const t = tools[key];
+    return `<div class="legend-item">
+      <div class="legend-dot" style="background:${t.color}"></div>
+      <div>
+        <div class="legend-name">${m.logo} ${m.name}</div>
+        <div class="legend-score">Overall: ${t.overall}/100</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+</script>
+</body>
+</html>
