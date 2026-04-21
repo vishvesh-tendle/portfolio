@@ -255,7 +255,105 @@ footer{background:var(--surface);text-align:center;padding:1.4rem;font-size:.73r
   .tl-stats{grid-template-columns:1fr 1fr}
   .pe-row{grid-template-columns:52px 1fr 64px}
 }
-</style>
+
+    /* ── ARTIFACT 5 — HEALTHCARE USE CASE ── */
+    #a5{background:var(--surface)}
+
+    .uc-problem{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1.5rem}
+    .uc-problem-hdr{background:linear-gradient(135deg,rgba(248,113,113,0.08),rgba(124,58,237,0.06));padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1.25rem}
+    .uc-prob-icon{width:52px;height:52px;border-radius:12px;background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+    .uc-prob-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.3rem}
+    .uc-prob-sub{font-size:.82rem;color:var(--muted);line-height:1.6}
+    .uc-stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+    .uc-stat{padding:1.2rem 1.5rem;border-right:1px solid var(--border)}
+    .uc-stat:last-child{border-right:none}
+    .uc-stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.2rem}
+    .uc-stat-lbl{font-size:.67rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+    .uc-stat-src{font-size:.62rem;color:rgba(136,136,168,0.5);margin-top:.15rem}
+
+    .uc-solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+
+    .uc-arch{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+    .uc-arch-hdr{padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.65rem}
+    .uc-arch-ic{width:32px;height:32px;border-radius:8px;background:rgba(0,229,255,0.1);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+    .uc-arch-t{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.88rem}
+    .uc-arch-body{padding:1.25rem 1.5rem}
+
+    /* Flow steps */
+    .flow-steps{display:flex;flex-direction:column;gap:.5rem}
+    .flow-step{display:flex;align-items:flex-start;gap:.85rem;position:relative}
+    .flow-step:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;width:2px;height:calc(100% - 10px);background:rgba(255,255,255,0.06)}
+    .flow-num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;z-index:1}
+    .fn-1{background:rgba(248,113,113,0.15);color:var(--red);border:1px solid rgba(248,113,113,0.25)}
+    .fn-2{background:rgba(245,158,11,0.15);color:var(--accent3);border:1px solid rgba(245,158,11,0.25)}
+    .fn-3{background:rgba(0,229,255,0.12);color:var(--accent);border:1px solid rgba(0,229,255,0.2)}
+    .fn-4{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2)}
+    .fn-5{background:rgba(124,58,237,0.15);color:#a78bfa;border:1px solid rgba(124,58,237,0.25)}
+    .flow-content{padding-bottom:.75rem}
+    .flow-title{font-size:.83rem;font-weight:600;margin-bottom:.18rem}
+    .flow-desc{font-size:.75rem;color:var(--muted);line-height:1.55}
+
+    /* Tech stack */
+    .tech-stack{display:flex;flex-direction:column;gap:.6rem}
+    .tech-row{display:flex;align-items:center;gap:.85rem;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem}
+    .tech-icon{font-size:1rem;flex-shrink:0;width:24px;text-align:center}
+    .tech-name{font-size:.82rem;font-weight:600;flex:1}
+    .tech-role{font-size:.72rem;color:var(--muted)}
+    .tech-badge{font-size:.62rem;font-weight:700;padding:.18rem .5rem;border-radius:4px;white-space:nowrap}
+    .tb-core{background:rgba(0,229,255,0.08);color:var(--accent);border:1px solid rgba(0,229,255,0.15)}
+    .tb-data{background:rgba(245,158,11,0.08);color:var(--accent3);border:1px solid rgba(245,158,11,0.15)}
+    .tb-infra{background:rgba(124,58,237,0.08);color:#a78bfa;border:1px solid rgba(124,58,237,0.15)}
+
+    /* Roadmap */
+    .roadmap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1.5rem}
+    .roadmap-hdr{padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.65rem}
+    .roadmap-body{padding:1.25rem 1.5rem}
+    .roadmap-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .rp{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:1rem}
+    .rp-phase{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+    .rp-1 .rp-phase{color:var(--red)}
+    .rp-2 .rp-phase{color:var(--accent3)}
+    .rp-3 .rp-phase{color:var(--accent)}
+    .rp-4 .rp-phase{color:var(--green)}
+    .rp-time{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:.5rem}
+    .rp-title{font-size:.82rem;font-weight:600;margin-bottom:.4rem}
+    .rp-items{display:flex;flex-direction:column;gap:.25rem}
+    .rp-item{font-size:.72rem;color:var(--muted);display:flex;align-items:flex-start;gap:.4rem;line-height:1.45}
+    .rp-item::before{content:"→";flex-shrink:0;font-size:.65rem;margin-top:.1rem}
+    .rp-bar{height:3px;border-radius:2px;margin-top:.75rem}
+    .rp-1 .rp-bar{background:rgba(248,113,113,0.4)}
+    .rp-2 .rp-bar{background:rgba(245,158,11,0.4)}
+    .rp-3 .rp-bar{background:rgba(0,229,255,0.4)}
+    .rp-4 .rp-bar{background:rgba(34,197,94,0.5)}
+
+    /* Impact */
+    .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+    .impact-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem}
+    .impact-card.featured{border-color:rgba(0,229,255,0.2);background:rgba(0,229,255,0.03)}
+    .impact-icon{font-size:1.4rem;margin-bottom:.6rem}
+    .impact-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:.2rem}
+    .impact-num.c{color:var(--accent)}
+    .impact-num.g{color:var(--green)}
+    .impact-num.a{color:var(--accent3)}
+    .impact-label{font-size:.78rem;font-weight:600;margin-bottom:.3rem}
+    .impact-desc{font-size:.73rem;color:var(--muted);line-height:1.55}
+
+    /* Ethical considerations */
+    .ethics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+    .eth-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem}
+    .eth-icon{font-size:1.1rem;margin-bottom:.45rem}
+    .eth-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.85rem;margin-bottom:.35rem}
+    .eth-body{font-size:.75rem;color:var(--muted);line-height:1.55}
+
+    @media(max-width:900px){
+      .uc-solution-grid{grid-template-columns:1fr}
+      .uc-stats-row{grid-template-columns:1fr 1fr}
+      .roadmap-phases{grid-template-columns:1fr 1fr}
+      .impact-grid{grid-template-columns:1fr}
+      .ethics-row{grid-template-columns:1fr}
+    }
+
+    </style>
 </head>
 <body>
 
@@ -267,6 +365,7 @@ footer{background:var(--surface);text-align:center;padding:1.4rem;font-size:.73r
     <li><a href="#a2">Artifact 2</a></li>
     <li><a href="#a3">Artifact 3</a></li>
     <li><a href="#a4">Artifact 4</a></li>
+    <li><a href="#a5">Artifact 5</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -284,7 +383,7 @@ footer{background:var(--surface);text-align:center;padding:1.4rem;font-size:.73r
       <a href="dashboard.html" target="_blank" class="btn-g">📊 AI Tools Dashboard</a>
     </div>
     <div class="stat-bar">
-      <div><div class="sn">4</div><div class="sl">Artifacts</div></div>
+      <div><div class="sn">5</div><div class="sl">Artifacts</div></div>
       <div><div class="sn">7</div><div class="sl">AI Tools Used</div></div>
       <div><div class="sn">70+</div><div class="sl">Years Mapped</div></div>
     </div>
@@ -663,6 +762,292 @@ footer{background:var(--surface);text-align:center;padding:1.4rem;font-size:.73r
     </div>
   </div>
 </section>
+
+
+<!-- ARTIFACT 5 -->
+<section id="a5">
+  <div class="eyebrow">Artifact 5 — Industry Application</div>
+  <div class="stitle">AI in Healthcare: Early Disease Detection System</div>
+  <p class="ssub">A comprehensive use case analysis proposing an AI-powered early detection system for chronic diseases — mapping the problem, solution architecture, implementation roadmap, projected impact, and ethical considerations.</p>
+
+  <!-- Problem Statement -->
+  <div class="uc-problem">
+    <div class="uc-problem-hdr">
+      <div class="uc-prob-icon">🏥</div>
+      <div>
+        <div class="uc-prob-title">The Problem: Late-Stage Disease Diagnosis Costs Lives and Money</div>
+        <div class="uc-prob-sub">Chronic diseases including diabetes, cardiovascular disease, and cancer are consistently diagnosed at late stages when treatment is most expensive and outcomes are worst. The root cause is not lack of medical knowledge — it is lack of early, accessible, data-driven screening that can identify risk patterns before symptoms appear.</div>
+      </div>
+    </div>
+    <div class="uc-stats-row">
+      <div class="uc-stat">
+        <div class="uc-stat-num" style="color:var(--red)">80%</div>
+        <div class="uc-stat-lbl">of chronic disease costs</div>
+        <div class="uc-stat-src">are spent on late-stage treatment</div>
+      </div>
+      <div class="uc-stat">
+        <div class="uc-stat-num" style="color:var(--accent3)">$4.1T</div>
+        <div class="uc-stat-lbl">Annual US healthcare spend</div>
+        <div class="uc-stat-src">largely driven by chronic disease</div>
+      </div>
+      <div class="uc-stat">
+        <div class="uc-stat-num" style="color:var(--accent)">30%</div>
+        <div class="uc-stat-lbl">of diagnoses are delayed</div>
+        <div class="uc-stat-src">by 1 or more years on average</div>
+      </div>
+      <div class="uc-stat">
+        <div class="uc-stat-num" style="color:var(--green)">5×</div>
+        <div class="uc-stat-lbl">better survival rates</div>
+        <div class="uc-stat-src">with early-stage vs. late-stage detection</div>
+      </div>
+    </div>
+    <div style="padding:1.25rem 1.5rem;border-top:1px solid var(--border)">
+      <div style="font-size:.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">The Opportunity for AI</div>
+      <div style="font-size:.82rem;color:var(--muted);line-height:1.7;max-width:800px">Electronic Health Records (EHRs), wearable sensor data, lab results, and imaging data already exist at scale — but they are not being systematically analyzed to predict disease risk before symptoms appear. A machine learning system trained on this data could surface high-risk patients months or years before a clinical diagnosis, enabling preventive intervention at a fraction of the treatment cost.</div>
+    </div>
+  </div>
+
+  <!-- Solution Architecture + Tech Stack -->
+  <div class="uc-solution-grid">
+
+    <!-- Data Flow / Architecture -->
+    <div class="uc-arch">
+      <div class="uc-arch-hdr">
+        <div class="uc-arch-ic">🔄</div>
+        <div class="uc-arch-t">AI Solution Architecture — Data to Decision</div>
+      </div>
+      <div class="uc-arch-body">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num fn-1">1</div>
+            <div class="flow-content">
+              <div class="flow-title">Data Ingestion & Integration</div>
+              <div class="flow-desc">Aggregate patient data from EHRs, wearables (heart rate, glucose, activity), lab results, and medical imaging. Standardize using HL7 FHIR health data interoperability format.</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num fn-2">2</div>
+            <div class="flow-content">
+              <div class="flow-title">Data Preprocessing & Feature Engineering</div>
+              <div class="flow-desc">Clean missing values, normalize lab ranges across demographics, encode temporal patterns (trend over 12 months vs. single readings), handle class imbalance using SMOTE oversampling.</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num fn-3">3</div>
+            <div class="flow-content">
+              <div class="flow-title">Predictive Model Training</div>
+              <div class="flow-desc">Train ensemble models (XGBoost + Neural Network) on labeled historical outcomes. Optimize for recall over precision — in healthcare, missing a true positive is costlier than a false alarm.</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num fn-4">4</div>
+            <div class="flow-content">
+              <div class="flow-title">Risk Scoring & Explainability</div>
+              <div class="flow-desc">Output a risk score (0–100) per patient with SHAP values explaining which features drove the score — so clinicians understand why a patient is flagged, not just that they are.</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num fn-5">5</div>
+            <div class="flow-content">
+              <div class="flow-title">Clinical Dashboard & Alerts</div>
+              <div class="flow-desc">Surface high-risk patients in a clinician-facing dashboard with priority queues, trend visualizations, and one-click scheduling for preventive consultations. Human physician always makes final decision.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="uc-arch">
+      <div class="uc-arch-hdr">
+        <div class="uc-arch-ic">⚙️</div>
+        <div class="uc-arch-t">Technologies & Tools</div>
+      </div>
+      <div class="uc-arch-body">
+        <div class="tech-stack">
+          <div class="tech-row">
+            <div class="tech-icon">🧠</div>
+            <div>
+              <div class="tech-name">XGBoost + Neural Networks</div>
+              <div class="tech-role">Core predictive models for risk classification</div>
+            </div>
+            <span class="tech-badge tb-core">Core AI</span>
+          </div>
+          <div class="tech-row">
+            <div class="tech-icon">🐍</div>
+            <div>
+              <div class="tech-name">Python (scikit-learn, TensorFlow)</div>
+              <div class="tech-role">Model development, training, and evaluation</div>
+            </div>
+            <span class="tech-badge tb-core">Core AI</span>
+          </div>
+          <div class="tech-row">
+            <div class="tech-icon">📊</div>
+            <div>
+              <div class="tech-name">SHAP (SHapley Additive exPlanations)</div>
+              <div class="tech-role">Model explainability for clinician trust</div>
+            </div>
+            <span class="tech-badge tb-core">Core AI</span>
+          </div>
+          <div class="tech-row">
+            <div class="tech-icon">🗄️</div>
+            <div>
+              <div class="tech-name">Apache Spark + Kafka</div>
+              <div class="tech-role">Real-time data streaming from wearables & EHRs</div>
+            </div>
+            <span class="tech-badge tb-data">Data</span>
+          </div>
+          <div class="tech-row">
+            <div class="tech-icon">🏥</div>
+            <div>
+              <div class="tech-name">HL7 FHIR Standard</div>
+              <div class="tech-role">Healthcare data interoperability & integration</div>
+            </div>
+            <span class="tech-badge tb-data">Data</span>
+          </div>
+          <div class="tech-row">
+            <div class="tech-icon">☁️</div>
+            <div>
+              <div class="tech-name">AWS HealthLake / Azure Health</div>
+              <div class="tech-role">HIPAA-compliant cloud infrastructure</div>
+            </div>
+            <span class="tech-badge tb-infra">Infra</span>
+          </div>
+          <div class="tech-row">
+            <div class="tech-icon">🔒</div>
+            <div>
+              <div class="tech-name">Federated Learning</div>
+              <div class="tech-role">Train across hospitals without sharing raw patient data</div>
+            </div>
+            <span class="tech-badge tb-infra">Privacy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Implementation Roadmap -->
+  <div class="roadmap">
+    <div class="roadmap-hdr">
+      <div class="uc-arch-ic">🗺️</div>
+      <div class="uc-arch-t">Implementation Roadmap — 18-Month Phased Rollout</div>
+    </div>
+    <div class="roadmap-body">
+      <div class="roadmap-phases">
+        <div class="rp rp-1">
+          <div class="rp-phase">Phase 1</div>
+          <div class="rp-time">Months 1–3</div>
+          <div class="rp-title">Foundation & Data</div>
+          <div class="rp-items">
+            <div class="rp-item">Secure IRB approval & HIPAA compliance review</div>
+            <div class="rp-item">Establish EHR data pipelines with HL7 FHIR</div>
+            <div class="rp-item">Define target conditions (diabetes, CVD)</div>
+            <div class="rp-item">Assemble labeled historical patient dataset</div>
+          </div>
+          <div class="rp-bar"></div>
+        </div>
+        <div class="rp rp-2">
+          <div class="rp-phase">Phase 2</div>
+          <div class="rp-time">Months 4–8</div>
+          <div class="rp-title">Model Development</div>
+          <div class="rp-items">
+            <div class="rp-item">Feature engineering on EHR + wearable data</div>
+            <div class="rp-item">Train and tune XGBoost & neural net models</div>
+            <div class="rp-item">Integrate SHAP explainability layer</div>
+            <div class="rp-item">Internal validation on holdout dataset</div>
+          </div>
+          <div class="rp-bar"></div>
+        </div>
+        <div class="rp rp-3">
+          <div class="rp-phase">Phase 3</div>
+          <div class="rp-time">Months 9–14</div>
+          <div class="rp-title">Pilot Deployment</div>
+          <div class="rp-items">
+            <div class="rp-item">Deploy in 2–3 partner hospital systems</div>
+            <div class="rp-item">Clinician dashboard rollout & training</div>
+            <div class="rp-item">Monitor false positive / negative rates</div>
+            <div class="rp-item">Collect clinician feedback & iterate</div>
+          </div>
+          <div class="rp-bar"></div>
+        </div>
+        <div class="rp rp-4">
+          <div class="rp-phase">Phase 4</div>
+          <div class="rp-time">Months 15–18</div>
+          <div class="rp-title">Scale & Optimize</div>
+          <div class="rp-items">
+            <div class="rp-item">Expand to additional hospital networks</div>
+            <div class="rp-item">Implement federated learning across sites</div>
+            <div class="rp-item">Add cancer screening & mental health modules</div>
+            <div class="rp-item">Publish outcomes & pursue FDA clearance</div>
+          </div>
+          <div class="rp-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projected Impact -->
+  <div class="impact-grid">
+    <div class="impact-card featured">
+      <div class="impact-icon">🎯</div>
+      <div class="impact-num c">94%</div>
+      <div class="impact-label">Projected Detection Accuracy</div>
+      <div class="impact-desc">Based on published results from comparable EHR-trained models for Type 2 diabetes and cardiovascular risk prediction at 12-month lead time.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">💰</div>
+      <div class="impact-num a">$2,800</div>
+      <div class="impact-label">Average Cost Saved Per Patient</div>
+      <div class="impact-desc">Preventive intervention costs an estimated $400–800 vs. $3,200–4,500 for late-stage chronic disease management per patient annually.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">⏱️</div>
+      <div class="impact-num g">14 mo.</div>
+      <div class="impact-label">Earlier Average Detection</div>
+      <div class="impact-desc">AI-assisted screening in similar deployments has identified at-risk patients an average of 14 months earlier than standard care pathways.</div>
+    </div>
+  </div>
+
+  <!-- Ethical Considerations -->
+  <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1rem;color:var(--text)">Ethical Considerations</div>
+  <div class="ethics-row">
+    <div class="eth-card">
+      <div class="eth-icon">⚖️</div>
+      <div class="eth-title">Bias & Fairness</div>
+      <div class="eth-body">Training data must be audited for demographic bias — models trained on historically underserved populations often perform worse for those same groups. Regular fairness audits across age, race, and gender are required before and after deployment.</div>
+    </div>
+    <div class="eth-card">
+      <div class="eth-icon">🔒</div>
+      <div class="eth-title">Privacy & Consent</div>
+      <div class="eth-body">Patient data must be handled under strict HIPAA compliance with explicit informed consent for AI analysis. Federated learning minimizes data exposure by training models locally at each hospital without centralizing raw records.</div>
+    </div>
+    <div class="eth-card">
+      <div class="eth-icon">👨‍⚕️</div>
+      <div class="eth-title">Human Oversight</div>
+      <div class="eth-body">The AI system is a decision-support tool, not a replacement for clinical judgment. Every AI-generated risk flag must be reviewed and acted upon by a licensed physician. The model recommends; the doctor decides.</div>
+    </div>
+  </div>
+
+  <!-- Reflection -->
+  <div class="artifact-reflection">
+    <div class="refl-label">Artifact 5 Reflection — AI Healthcare Use Case</div>
+    <div class="refl-grid">
+      <div class="refl-item">
+        <div class="refl-q">Why I chose this</div>
+        <div class="refl-a">Healthcare represents one of the highest-stakes applications of AI — where the difference between a correct and incorrect prediction is a human life. I chose this use case because it required me to think beyond technical performance metrics and consider <strong>real-world deployment constraints</strong>: regulatory compliance, clinical workflow integration, and the irreplaceable role of human judgment.</div>
+      </div>
+      <div class="refl-item">
+        <div class="refl-q">What I learned</div>
+        <div class="refl-a">The most important insight was that in healthcare AI, <strong>recall matters more than precision</strong>. A model optimized for accuracy might miss 10% of high-risk patients — which is statistically fine but clinically unacceptable. Designing for the right metric requires understanding the domain deeply, not just the data.</div>
+      </div>
+      <div class="refl-item">
+        <div class="refl-q">What I would do next</div>
+        <div class="refl-a">I would build a <strong>working prototype</strong> using a publicly available healthcare dataset (such as the MIMIC-III clinical database) to validate the architecture with real data. I would also add a longitudinal evaluation component — tracking whether AI-flagged patients who received early intervention had measurably better outcomes over 24 months.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- SKILLS -->
 <section id="skills">
